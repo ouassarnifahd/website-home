@@ -1,21 +1,340 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css" />
-        <title>Tales of My life</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <h1>The webpage is still in developement!</h1>
-        <li>
-            <a href="resume/index.html">Resume</a>
-        </li>
-        <script type="text/javascript">
-            // Use a wrapping function to prevent global variables
-            // (function () {
-                // return alert("Success!");
-            // })();
-        </script>
-    </body>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="blog">
+    <meta name="author" content="Fahd Ouassarni">
+
+    <title>Tales of My life</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/agency.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Tales of My life</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="resume/index.html">Resume</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="code.html">Code</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="travel.html">Travel</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Snowflakes -->
+    <script type="javascript">
+      (function () {
+      var COUNT = 300;
+      var masthead = document.querySelector('header.masthead');
+      var canvas = document.createElement('canvas');
+      var ctx = canvas.getContext('2d');
+      var width = masthead.clientWidth;
+      var height = masthead.clientHeight;
+      var i = 0;
+      var active = false;
+      function onResize() {
+        width = masthead.clientWidth;
+        height = masthead.clientHeight;
+        canvas.width = width;
+        canvas.height = height;
+        ctx.fillStyle = '#FFF';
+        var wasActive = active;
+        active = width > 600;
+        if (!wasActive && active)
+          requestAnimFrame(update);
+      }
+      var Snowflake = function () {
+        this.x = 0;
+        this.y = 0;
+        this.vy = 0;
+        this.vx = 0;
+        this.r = 0;
+        this.reset();
+      }
+      Snowflake.prototype.reset = function() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * -height;
+        this.vy = 1 + Math.random() * 3;
+        this.vx = 0.5 - Math.random();
+        this.r = 1 + Math.random() * 2;
+        this.o = 0.5 + Math.random() * 0.5;
+      }
+      canvas.style.position = 'absolute';
+      canvas.style.left = canvas.style.top = '0';
+      var snowflakes = [], snowflake;
+      for (i = 0; i < COUNT; i++) {
+        snowflake = new Snowflake();
+        snowflake.reset();
+        snowflakes.push(snowflake);
+      }
+      function update() {
+        ctx.clearRect(0, 0, width, height);
+        if (!active)
+          return;
+        for (i = 0; i < COUNT; i++) {
+          snowflake = snowflakes[i];
+          snowflake.y += snowflake.vy;
+          snowflake.x += snowflake.vx;
+          ctx.globalAlpha = snowflake.o;
+          ctx.beginPath();
+          ctx.arc(snowflake.x, snowflake.y, snowflake.r, 0, Math.PI * 2, false);
+          ctx.closePath();
+          ctx.fill();
+          if (snowflake.y > height) {
+            snowflake.reset();
+          }
+        }
+        requestAnimFrame(update);
+      }
+      window.requestAnimFrame = (function(){
+        return  window.requestAnimationFrame       ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame    ||
+                function( callback ){
+                  window.setTimeout(callback, 1000 / 60);
+                };
+      })();
+      onResize();
+      window.addEventListener('resize', onResize, false);
+      masthead.appendChild(canvas);
+    })();
+    </script>
+
+    <!-- Header -->
+    <header class="masthead">
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-lead-in">Welcome to my life!</div>
+          <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#about">Tell Me More</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">About</h2>
+            <h3 class="section-subheading text-muted">One's life can never be summed up by a few words!</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <ul class="timeline">
+              <li>
+                <div class="timeline-image">
+                  <img class="rounded-circle img-fluid" src="img/about/1.jpg" alt="">
+                </div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4>1996</h4>
+                    <h4 class="subheading">A piece of meat</h4>
+                  </div>
+                  <div class="timeline-body">
+                    <p class="text-muted"> I was born in Morocco in a medium size familly. I was raised by Two Suns,...!</p>
+                  </div>
+                </div>
+              </li>
+              <li class="timeline-inverted">
+                <div class="timeline-image">
+                  <img class="rounded-circle img-fluid" src="img/about/2.jpg" alt="">
+                </div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4>2002</h4>
+                    <h4 class="subheading">A light of Curiosity</h4>
+                  </div>
+                  <div class="timeline-body">
+                    <p class="text-muted">I was six when I first got to school, I didn't like it at all. But since that time I began inspecting the world differently!</p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="timeline-image">
+                  <img class="rounded-circle img-fluid" src="img/about/3.jpg" alt="">
+                </div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4>2014</h4>
+                    <h4 class="subheading">A growing wing</h4>
+                  </div>
+                  <div class="timeline-body">
+                    <p class="text-muted">I left my home country and came to France for Engineering studies, following my curiosity!</p>
+                  </div>
+                </div>
+              </li>
+              <li class="timeline-inverted">
+                <div class="timeline-image">
+                  <img class="rounded-circle img-fluid" src="img/about/4.jpg" alt="">
+                </div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4>2018</h4>
+                    <h4 class="subheading">Fly, the Sky is yours!</h4>
+                  </div>
+                  <div class="timeline-body">
+                    <p class="text-muted">A first try, a challenge, heading to Japan!</p>
+                  </div>
+                </div>
+              </li>
+              <li class="timeline-inverted">
+                <div class="timeline-image">
+                    <img class="rounded-circle img-fluid" src="https://graph.facebook.com/100010342719253/picture?type=large" alt="More on Facebook">
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Leave your touch</h2>
+            <h3 class="section-subheading text-muted">Comment your thoughts.</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <form id="contactForm" name="sentMessage" novalidate>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input class="form-control" id="name" type="text" placeholder="Your Name *" required data-validation-required-message="Please enter your name.">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" id="email" type="email" placeholder="Your Email *" required data-validation-required-message="Please enter your email address.">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" id="phone" type="tel" placeholder="Your Phone">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <textarea class="form-control" id="message" placeholder="Your Comment *" required data-validation-required-message="Please enter a comment."></textarea>
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-lg-12 text-center">
+                  <div id="success"></div>
+                  <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">Send Comment</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Script -->
+    <script>
+      n =  new Date();
+      y = n.getFullYear();
+      document.getElementById("date").innerHTML = y;
+    </script>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; <p id="date"></p></span>
+          </div>
+          <div class="col-md">
+            <a href="https://www.facebook.com/ouss.fahd">
+              <i class="fa fa-3x fa-facebook-square"></i>
+            </a>
+          </div>
+          <div class="col-md">
+            <a href="https://www.instagram.com/fahdouassarni">
+              <i class="fa fa-3x fa-instagram"></i>
+            </a>
+          </div>
+          <div class="col-md">
+            <a href="https://www.youtube.com/c/FahdOuassarni">
+              <i class="fa fa-3x fa-youtube-square"></i>
+            </a>
+          </div>
+          <div class="col-md">
+            <a href="https://www.twitch.tv/oussfahd">
+              <i class="fa fa-3x fa-twitch"></i>
+            </a>
+          </div>
+          <div class="col-md">
+            <a href="https://github.com/ouassarnifahd">
+              <i class="fa fa-3x fa-github-square"></i>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+              <li class="list-inline-item">
+                <a>With <i class="fa fa-heart"></i> at Caen.</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact form JavaScript -->
+    <!-- <script src="js/jqBootstrapValidation.js"></script> -->
+    <!-- <script src="js/contact_me.js"></script> -->
+
+    <!-- Custom scripts for this template -->
+    <script src="js/agency.min.js"></script>
+
+  </body>
+
 </html>
